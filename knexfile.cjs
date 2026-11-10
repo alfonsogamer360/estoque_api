@@ -12,7 +12,8 @@ module.exports = {
     },
     migrations: {
       directory: "./migrations",
+      loadExtensions: [".js"],
     },
-    debug: true,
+    debug: process.env.KNEX_DEBUG === "true",
   },
 };

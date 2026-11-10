@@ -1,8 +1,7 @@
-require("dotenv").config();
+import "dotenv/config";
+import app from "./app.js";
 
-const app = require("./app");
-
-const PORT = process.env.PORT || 3000;
+const PORT = Number(process.env.PORT || 3000);
 
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);

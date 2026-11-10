@@ -1,11 +1,11 @@
-const express = require("express");
-const produtoRoutes = require("./routes/produtoRoutes");
+import express from "express";
+import { routerProdutos } from "./routes/produto.route.js";
 
 const app = express();
 
 app.use(express.json());
 
-app.use("/produtos", produtoRoutes);
+app.use("/produtos", routerProdutos);
 
 app.use((req, res) => {
   res.status(404).json({
@@ -20,7 +20,7 @@ app.use((erro, req, res, next) => {
     });
   }
 
-  const status = erro.status || 500;
+  const status = erro.status || erro.statusCode || 500;
 
   if (status >= 500) {
     console.error(erro);
@@ -31,4 +31,4 @@ app.use((erro, req, res, next) => {
   });
 });
 
-module.exports = app;
+export default app;
